@@ -1,0 +1,46 @@
+﻿@model Parcial1_1201619.Models.Appointment
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1 class="text-center">Eliminar</h1>
+
+<h3 class="alert-danger text-center">Estás seguro de eliminar este registro?</h3>
+
+<div>
+    <h4>Cita</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Fecha de la Cita
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AppointmentDate)
+        </dd>
+        <dt class = "col-sm-2">
+            Hora de la Cita
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AppointmentTime)
+        </dd>
+        <dt class = "col-sm-2">
+            Nombre del Doctor
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PersonalInformationDoctor.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            Nombre del Paciente
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PersonalInformationPatient.Id)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-dark">Regresar al Index</a>
+    </form>
+</div>

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Parcial1_1201619.Models.Appointment>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Citas</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Crear Cita</a>
+</p>
+<table class="table table-striped   ">
+    <thead>
+        <tr>
+            <th>
+                Fecha de la Cita
+            </th>
+            <th>
+                Hora de la Cita
+            </th>
+            <th>
+               Nombre del Doctor
+            </th>
+            <th>
+                Nombre del Paciente
+            </th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppointmentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppointmentTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PersonalInformationDoctor.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PersonalInformationPatient.Id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info">Editar</a> 
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-warning">Ver Detalles</a> 
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

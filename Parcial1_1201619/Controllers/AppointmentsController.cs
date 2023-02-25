@@ -22,6 +22,8 @@ namespace Parcial1_1201619.Controllers
         public async Task<IActionResult> Index()
         {
             var parcialWeb1Context = _context.Appointments.Include(a => a.PersonalInformationDoctor).Include(a => a.PersonalInformationPatient);
+            ViewData["PersonalInformationDoctorId"] = new SelectList(_context.PersonalInformations, "Id", "Name");
+            ViewData["PersonalInformationPatientId"] = new SelectList(_context.PersonalInformations, "Id", "Name");
             return View(await parcialWeb1Context.ToListAsync());
         }
 
@@ -60,15 +62,15 @@ namespace Parcial1_1201619.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,PersonalInformationPatientId,PersonalInformationDoctorId,AppointmentDate,AppointmentTime")] Appointment appointment)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 _context.Add(appointment);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
-            ViewData["PersonalInformationDoctorId"] = new SelectList(_context.PersonalInformations, "Id", "Name", appointment.PersonalInformationDoctorId);
-            ViewData["PersonalInformationPatientId"] = new SelectList(_context.PersonalInformations, "Id", "Name", appointment.PersonalInformationPatientId);
-            return View(appointment);
+            //}
+            //ViewData["PersonalInformationDoctorId"] = new SelectList(_context.PersonalInformations, "Id", "Name", appointment.PersonalInformationDoctorId);
+            //ViewData["PersonalInformationPatientId"] = new SelectList(_context.PersonalInformations, "Id", "Name", appointment.PersonalInformationPatientId);
+            //return View(appointment);
         }
 
         // GET: Appointments/Edit/5
@@ -138,6 +140,17 @@ namespace Parcial1_1201619.Controllers
                 .Include(a => a.PersonalInformationDoctor)
                 .Include(a => a.PersonalInformationPatient)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
+
+            ////var appointment = await _context.Appointments.Where(u => u.ID == idUsuarioBuscado).Select(u => u.Nombre).FirstOrDefault();
+            //var appointment = from a in _context.Appointments
+            //                  join b in _context.PersonalInformations on a.Id equals b.Id
+            //                  select new
+            //                  {
+            //                      id= a.Id,
+            //                      name= b.Name,
+            //                  };
+
             if (appointment == null)
             {
                 return NotFound();

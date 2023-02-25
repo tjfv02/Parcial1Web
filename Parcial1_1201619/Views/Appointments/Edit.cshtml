@@ -4,9 +4,10 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1 class="text-center">Editar</h1>
 
-<h4>Appointment</h4>
+
+<h4>Cita</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,34 +15,34 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="PersonalInformationPatientId" class="control-label"></label>
+                <label asp-for="PersonalInformationPatientId" class="control-label"style="margin-top:10px">Paciente</label>
                 <select asp-for="PersonalInformationPatientId" class="form-control" asp-items="ViewBag.PersonalInformationPatientId"></select>
                 <span asp-validation-for="PersonalInformationPatientId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PersonalInformationDoctorId" class="control-label"></label>
+                <label asp-for="PersonalInformationDoctorId" class="control-label"style="margin-top:10px">Doctor</label>
                 <select asp-for="PersonalInformationDoctorId" class="form-control" asp-items="ViewBag.PersonalInformationDoctorId"></select>
                 <span asp-validation-for="PersonalInformationDoctorId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AppointmentDate" class="control-label"></label>
+                <label asp-for="AppointmentDate" class="control-label" style="margin-top:10px"> Fecha de la Cita</label>
                 <input asp-for="AppointmentDate" class="form-control" />
                 <span asp-validation-for="AppointmentDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AppointmentTime" class="control-label"></label>
+                <label asp-for="AppointmentTime" class="control-label" style="margin-top:10px"> Hora de la Cita</label>
                 <input asp-for="AppointmentTime" class="form-control" />
                 <span asp-validation-for="AppointmentTime" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div class="form-group" style="margin-top:10px">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+<div style="margin-top:10px">
+    <a asp-action="Index" class="btn btn-dark">Regresar al Index</a>
 </div>
 
 @section Scripts {
